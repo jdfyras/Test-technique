@@ -1,0 +1,7 @@
+{
+    "openapi.dataDictionaryPreAuditFix": "always",
+    "yaml.schemas": {
+        "file:///c%3A/Users/pc/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+        "https://json.schemastore.org/cirrus.json": "file:///c%3A/Users/firas/Documents/GitHub/api.flights.bedsontrips.com/swagger/swagger.yaml"
+    }
+}
