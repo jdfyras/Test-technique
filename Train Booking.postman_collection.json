@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "2c9022dd-8093-4a7e-bd51-3370c534b981",
+		"name": "Train Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15678057"
+	},
+	"item": [
+		{
+			"name": "Authentification",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"passwordConfirm\": \"12345678\",\r\n    \"firstName\": \"firas\",\r\n    \"lastName\": \"jday\",\r\n    \"gender\": \"M\",\r\n    \"cin\": \"10814008\",\r\n    \"dialCode\": \"+216\",\r\n    \"phone\": \"24560357\",\r\n    \"country\": \"tunisia\",\r\n    \"city\": \"zaghouen\",\r\n    \"governorate\": \"zaghouen\",\r\n    \"street\": \"rue abc\",\r\n    \"postalcode\": \"1152\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response=pm.response.json()\r",
+									"pm.collectionVariables.set(\"accessToken\", response.accessToken);\r",
+									"pm.collectionVariables.set(\"refreshToken\", response.refreshToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jdfyras@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response=pm.response.json()\r",
+									"pm.collectionVariables.set(\"accessToken\", response.accessToken);\r",
+									"pm.collectionVariables.set(\"refreshToken\", response.refreshToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/auth/refreshToken",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"refreshToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "refreshToken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjUwNzg3MjgsImV4cCI6MTY1NjYzNjMyOCwiYXVkIjoiNjBjNmExY2NiMjFhYmEzZmMwNmZkZDk0IiwiaXNzIjoicGlja3VycGFnZS5jb20ifQ._WqIQWVZlWv4g0yid9urRb_FR47_ghBsRcj7tAVOyqw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "createBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// let response=pm.response.json()\r",
+									"// pm.collectionVariables.set(\"accessToken\", response.accessToken);\r",
+									"// pm.collectionVariables.set(\"refreshToken\", response.refreshToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"searchCode\": \"{{searchCode}}\",\r\n    \"trainId\": \"{{trainId}}\",\r\n    \"seatId\": \"{{seatId}}\",\r\n    \"passengers\": [\r\n        {\r\n            \"title\": \"Mr\",\r\n            \"firstName\": \"test\",\r\n            \"lastName\": \"test\",\r\n            \"birthDate\": \"1996-03-20\",\r\n            \"nationality\": \"TN\",\r\n            \"cin\": \"12345678\",\r\n            \"phone\": \"29449117\",\r\n            \"dialCode\": \"+216\",\r\n            \"address\": \"rue mrezga\",\r\n            \"city\": \"nabeul\",\r\n            \"countryCode\": \"TN\",\r\n            \"countryName\": \"Tunisia\",\r\n            \"email\": \"jdfyras@gmail.com\",\r\n            \"gender\": \"M\",\r\n            \"type\": \"ADT\",\r\n            \"infants\": {\r\n                \"birthDate\": \"2022-03-20\",\r\n                \"firstName\": \"baby\",\r\n                \"lastName\": \"test\",\r\n                \"nationality\": \"TN\",\r\n                \"sex\": \"M\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/booking",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/booking",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByRefresa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/booking/:refresa",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"booking",
+								":refresa"
+							],
+							"variable": [
+								{
+									"key": "refresa",
+									"value": "1A1DB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/booking/:refresa?statusId=1",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"booking",
+								":refresa"
+							],
+							"query": [
+								{
+									"key": "statusId",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "refresa",
+									"value": "1A1DB"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/booking/:refresa",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"booking",
+								":refresa"
+							],
+							"variable": [
+								{
+									"key": "refresa",
+									"value": "5BFDA"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Availability",
+			"item": [
+				{
+					"name": "Availability Train",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response=pm.response.json()\r",
+									"pm.collectionVariables.set(\"searchCode\", response.searchCode);\r",
+									"pm.collectionVariables.set(\"trainId\", response.trainList[1].trainId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');\r",
+									"var twoWeeksLater = moment().add(14, 'days'); \r",
+									"pm.environment.set(\"departureDate\", twoWeeksLater.format('YYYY-MM-DD'));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jouney\": [\r\n        {\r\n            \"depDate\": \"2023-03-20\",\r\n            \"origin\": \"ALG\",\r\n            \"destination\": \"PAR\"\r\n        }\r\n    ],\r\n    \"class\": \"all\",\r\n    \"journeyType\": \"oneway\",\r\n    \"paxes\": {\r\n        \"adults\": 1,\r\n        \"children\": 0,\r\n        \"infants\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/train/availability",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"train",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Availability Seat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response=pm.response.json()\r",
+									"pm.collectionVariables.set(\"searchCode\", response.searchCode);\r",
+									"pm.collectionVariables.set(\"trainId\", response.seatsList[0].refTrain);\r",
+									"pm.collectionVariables.set(\"seatId\", response.seatsList[0].seatId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"searchCode\": \"{{searchCode}}\",\r\n    \"trainId\": \"{{trainId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/seat/availability",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"seat",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSeatsBySeatId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// let response=pm.response.json()\r",
+									"// pm.collectionVariables.set(\"searchCode\", response.searchCode);\r",
+									"// pm.collectionVariables.set(\"trainId\", response.trainList[0].trainId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/seat/getSeatsBySeatId/:seatId",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"seat",
+								"getSeatsBySeatId",
+								":seatId"
+							],
+							"variable": [
+								{
+									"key": "seatId",
+									"value": "{{seatId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSeat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/seat/:trainId/:seatNumber",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"seat",
+								":trainId",
+								":seatNumber"
+							],
+							"variable": [
+								{
+									"key": "trainId",
+									"value": null
+								},
+								{
+									"key": "seatNumber",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSeats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/seat/:trainId",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"seat",
+								":trainId"
+							],
+							"variable": [
+								{
+									"key": "trainId",
+									"value": "{{trainId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSeat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// let response=pm.response.json()\r",
+									"// pm.collectionVariables.set(\"searchCode\", response.searchCode);\r",
+									"// pm.collectionVariables.set(\"trainId\", response.trainList[0].trainId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}:{{PORT}}/seat/:seatId?travelClass=C",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"seat",
+								":seatId"
+							],
+							"query": [
+								{
+									"key": "travelClass",
+									"value": "C"
+								}
+							],
+							"variable": [
+								{
+									"key": "seatId",
+									"value": "{{seatId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PORT",
+			"value": "4000",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		},
+		{
+			"key": "searchCode",
+			"value": ""
+		},
+		{
+			"key": "trainId",
+			"value": ""
+		},
+		{
+			"key": "seatId",
+			"value": ""
+		},
+		{
+			"value": "",
+			"type": "string"
+		}
+	]
+}
