@@ -1,7 +1,7 @@
 // prettier.config.js or .prettierrc.js
 module.exports = {
     // Fit code within this line limit
-    printWidth: 200,
+    printWidth: 100,
     // Number of spaces it should use per tab
     tabWidth: 4,
     // If true, will use single instead of double quotes
