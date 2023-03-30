@@ -73,7 +73,6 @@ module.exports = {
                 user.email
             )
             const refreshToken = await JWT.signRefreshToken(user.userId)
-            process.env.JWT_SECRET = accessToken
             res.status(200).json({ success: true, accessToken, refreshToken })
         } catch (error) {
             console.error(error)
